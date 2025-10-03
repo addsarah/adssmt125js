@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 1</title>
+</head>
+<body>
+  <script>
+    // 1. Buat array kosong
+    const namaMahasiswa = [];
+
+    // 2. Tambahkan nama
+    namaMahasiswa.push(
+      "Sarah", 
+      "Rahmanyadianti",
+      "Zalfa",
+      "Amry",
+      "Cheryl",
+      "Aira",
+      "Dewi",
+      "Farrel",
+      "Fredy",
+      "Gavin",
+      "Gyat",
+      "Ihsan",
+      "Javier",
+      "Kinantrama",
+      "Nadya"
+    );
+
+    // 3. Tampilkan seluruh isi array dalam bentuk tabel
+    console.table(namaMahasiswa);
+
+    // 4. Akses dan tampilkan nama di index ke-11 (dibuat object supaya tabel rapi)
+    console.table({ "Index 11": namaMahasiswa[11] });
+
+    // 5. Ubah nama mahasiswa terakhir
+    namaMahasiswa[namaMahasiswa.length - 1] = "Dzakwan";
+    console.table(namaMahasiswa);
+
+    // 6. Hapus nama di index ke-0
+    delete namaMahasiswa[0];
+    console.table(namaMahasiswa);
+
+    // 7. Isi kembali posisi index ke-0 dengan nama baru
+    namaMahasiswa[0] = "Rio";
+    console.table(namaMahasiswa);
+
+    // 8. Buat array baru nilaiMahasiswa dengan 5 angka acak
+    const nilaiMahasiswa = [92, 94, 72, 91, 83];
+
+    // Urutkan ascending
+    nilaiMahasiswa.sort((a, b) => a - b);
+
+    // Tampilkan hasilnya dalam tabel
+    console.table(nilaiMahasiswa);
+  </script>
+</body>
+</html>
