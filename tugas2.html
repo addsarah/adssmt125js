@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 4 - Algoritma Pencarian Linear</title>
+</head>
+<body>
+  <script>
+    // Fungsi Linear Search
+    function linearSearch(array, target) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].toLowerCase() === target.toLowerCase()) {
+          return i; // mengembalikan index jika ditemukan
+        }
+      }
+      return -1; // -1 berarti tidak ditemukan
+    }
+
+    // Array berisi 25 nama mahasiswa
+    const namaMahasiswa = [
+      "Yudhistira Oliviano Chessandro Putra",
+      "Ahmad Maulana",
+      "Aira Dzaky Ikhwan",
+      "Amry Purwanto",
+      "Cheryl Citra Lvarissa Yose Nyimas",
+      "Muhammad Damario Akbar Ramadhan",
+      "Dewi Patimah",
+      "Dwi Farel Khairullah",
+      "Farrel Andika",
+      "Fredy Agus Saputra Oey",
+      "Gavin Mahesya Marviano",
+      "Gyat Purwasatia",
+      "Ihsan Rafee Aristia",
+      "Javier Rifa Al Insan",
+      "Kinantrama El Moussaoui Hardhithio",
+      "Muhammad Rafi Dzakwan",
+      "Nadya Innayah Ramadhani Kembun",
+      "Putra Sandhi Pratama",
+      "Rahmanyadianti Nengtyastuti Rendro",
+      "Rakha Sapta Fabian",
+      "Rizky",
+      "Sarah Adibah",
+      "Sultan Daffa Julyan Rusmana",
+      "Toni Sudarsono",
+      "Zalfa Fairuz Zahirah"
+    ];
+
+    // Tampilkan daftar nama dalam bentuk tabel di console
+    console.table(namaMahasiswa);
+
+    // Nama yang ingin dicari (bisa diganti)
+    const namaDicari = "Muhammad Ilham Wibawa";
+
+    // Jalankan pencarian linear
+    const hasil = linearSearch(namaMahasiswa, namaDicari);
+
+    // Tampilkan hasil pencarian di console
+    if (hasil !== -1) {
+      console.log(`Nama "${namaDicari}" ditemukan pada index ke-${hasil}.`);
+    } else {
+      console.log(`Nama "${namaDicari}" tidak ditemukan dalam daftar.`);
+    }
+  </script>
+</body>
+</html>
