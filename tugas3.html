@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 3 - Merge Sort</title>
+</head>
+<body>
+  <script>
+    // Fungsi utama Merge Sort
+    function mergeSort(arr) {
+      if (arr.length <= 1) return arr;
+
+      const mid = Math.floor(arr.length / 2);
+      const left = arr.slice(0, mid);
+      const right = arr.slice(mid);
+
+      return merge(mergeSort(left), mergeSort(right));
+    }
+
+    // Fungsi penggabung dua array terurut (ascending)
+    function merge(left, right) {
+      let result = [];
+      let i = 0, j = 0;
+
+      while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+          result.push(left[i]);
+          i++;
+        } else {
+          result.push(right[j]);
+          j++;
+        }
+      }
+      return result.concat(left.slice(i)).concat(right.slice(j));
+    }
+
+    // Versi descending
+    function mergeDesc(left, right) {
+      let result = [];
+      let i = 0, j = 0;
+
+      while (i < left.length && j < right.length) {
+        if (left[i] > right[j]) {
+          result.push(left[i]);
+          i++;
+        } else {
+          result.push(right[j]);
+          j++;
+        }
+      }
+      return result.concat(left.slice(i)).concat(right.slice(j));
+    }
+
+    // UJI DENGAN ARRAY ANGKA
+    const angka = [45, 12, 78, 23, 56, 89, 90, 34, 67, 10, 5, 49, 82, 13, 29];
+
+    console.log("=== DATA ANGKA ===");
+    console.table(angka);
+
+    const ascendingAngka = mergeSort(angka);
+    console.log("Urutan ASCENDING (kecil ke besar):");
+    console.table(ascendingAngka);
+
+    const descendingAngka = mergeSort(angka).reverse();
+    console.log("Urutan DESCENDING (besar ke kecil):");
+    console.table(descendingAngka);
+
+    // UJI DENGAN ARRAY STRING
+    const nama = [
+      "Sarah", "Rahmanyadianti", "Zalfa", "Gavin", "Ihsan", "Gyat",
+      "Dzakwan", "Nadya", "Farrel", "Aira", "Cheryl", "Amry",
+      "Sultan", "Toni", "Rizky"
+    ];
+
+    console.log("=== DATA STRING ===");
+    console.table(nama);
+
+    const ascendingNama = mergeSort(nama);
+    console.log("Urutan ASCENDING (A-Z):");
+    console.table(ascendingNama);
+
+    const descendingNama = mergeSort(nama).reverse();
+    console.log("Urutan DESCENDING (Z-A):");
+    console.table(descendingNama);
+  </script>
+</body>
+</html>
