@@ -6,83 +6,102 @@
     <title>Tugas 3 - Merge Sort</title>
 </head>
 <body>
-  <script>
-    // Fungsi utama Merge Sort
-    function mergeSort(arr) {
-      if (arr.length <= 1) return arr;
+    <script>
+        // ====== FUNGSI MERGE SORT  ======
+        function merge(arr, left, mid, right) {
+            const n1 = mid - left + 1;
+            const n2 = right - mid;
 
-      const mid = Math.floor(arr.length / 2);
-      const left = arr.slice(0, mid);
-      const right = arr.slice(mid);
+            const L = new Array(n1);
+            const R = new Array(n2);
 
-      return merge(mergeSort(left), mergeSort(right));
-    }
+            // Salin data ke array sementara L[] dan R[]
+            for (let i = 0; i < n1; i++) L[i] = arr[left + i];
+            for (let j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
 
-    // Fungsi penggabung dua array terurut (ascending)
-    function merge(left, right) {
-      let result = [];
-      let i = 0, j = 0;
+            let i = 0, j = 0, k = left;
 
-      while (i < left.length && j < right.length) {
-        if (left[i] < right[j]) {
-          result.push(left[i]);
-          i++;
-        } else {
-          result.push(right[j]);
-          j++;
+            // Gabungkan kembali ke array utama (ascending)
+            while (i < n1 && j < n2) {
+                if (L[i] <= R[j]) {
+                    arr[k] = L[i];
+                    i++;
+                } else {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // Salin sisa elemen
+            while (i < n1) {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
         }
-      }
-      return result.concat(left.slice(i)).concat(right.slice(j));
-    }
 
-    // Versi descending
-    function mergeDesc(left, right) {
-      let result = [];
-      let i = 0, j = 0;
-
-      while (i < left.length && j < right.length) {
-        if (left[i] > right[j]) {
-          result.push(left[i]);
-          i++;
-        } else {
-          result.push(right[j]);
-          j++;
+        function mergeSort(arr, left, right) {
+            if (left >= right) return;
+            const mid = Math.floor(left + (right - left) / 2);
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+            merge(arr, left, mid, right);
         }
-      }
-      return result.concat(left.slice(i)).concat(right.slice(j));
-    }
 
-    // UJI DENGAN ARRAY ANGKA
-    const angka = [45, 12, 78, 23, 56, 89, 90, 34, 67, 10, 5, 49, 82, 13, 29];
+        // ============================
+        // 1️⃣ ARRAY ANGKA
+        // ============================
+        const angka = [45, 12, 78, 23, 56, 89, 90, 34, 67, 10, 5, 49, 82, 13, 29];
 
-    console.log("=== DATA ANGKA ===");
-    console.table(angka);
+        console.log("=========================================");
+        console.log("=== DATA ANGKA SEBELUM DIURUTKAN ===");
+        console.table(angka);
 
-    const ascendingAngka = mergeSort(angka);
-    console.log("Urutan ASCENDING (kecil ke besar):");
-    console.table(ascendingAngka);
+        // ASCENDING (kecil ke besar)
+        const ascendingAngka = [...angka];
+        mergeSort(ascendingAngka, 0, ascendingAngka.length - 1);
+        console.log("=== HASIL MERGE SORT ASCENDING (Kecil → Besar) ===");
+        console.table(ascendingAngka);
 
-    const descendingAngka = mergeSort(angka).reverse();
-    console.log("Urutan DESCENDING (besar ke kecil):");
-    console.table(descendingAngka);
+        // DESCENDING (besar ke kecil)
+        const descendingAngka = [...ascendingAngka].reverse();
+        console.log("=== HASIL MERGE SORT DESCENDING (Besar → Kecil) ===");
+        console.table(descendingAngka);
 
-    // UJI DENGAN ARRAY STRING
-    const nama = [
-      "Sarah", "Rahmanyadianti", "Zalfa", "Gavin", "Ihsan", "Gyat",
-      "Dzakwan", "Nadya", "Farrel", "Aira", "Cheryl", "Amry",
-      "Sultan", "Toni", "Rizky"
-    ];
+        // ============================
+        // 2️⃣ ARRAY STRING
+        // ============================
+        const nama = [
+            "Sarah", "Rahmanyadianti", "Zalfa", "Gavin", "Ihsan", "Rafi",
+            "Dzakwan", "Nadya", "Farrel", "Aira", "Cheryl", "Amry",
+            "Sultan", "Toni", "Rizky"
+        ];
 
-    console.log("=== DATA STRING ===");
-    console.table(nama);
+        console.log("=========================================");
+        console.log("=== DATA STRING SEBELUM DIURUTKAN ===");
+        console.table(nama);
 
-    const ascendingNama = mergeSort(nama);
-    console.log("Urutan ASCENDING (A-Z):");
-    console.table(ascendingNama);
+        // ASCENDING (A-Z)
+        const ascendingNama = [...nama];
+        mergeSort(ascendingNama, 0, ascendingNama.length - 1);
+        console.log("=== HASIL MERGE SORT ASCENDING (A → Z) ===");
+        console.table(ascendingNama);
 
-    const descendingNama = mergeSort(nama).reverse();
-    console.log("Urutan DESCENDING (Z-A):");
-    console.table(descendingNama);
-  </script>
+        // DESCENDING (Z-A)
+        const descendingNama = [...ascendingNama].reverse();
+        console.log("=== HASIL MERGE SORT DESCENDING (Z → A) ===");
+        console.table(descendingNama);
+
+        console.log("=========================================");
+        console.log("=== TUGAS 3 MERGE SORT SELESAI ===");
+        console.log("=========================================");
+    </script>
 </body>
 </html>
