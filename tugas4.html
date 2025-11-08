@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 6 - Record & Pointer</title>
+</head>
+<body>
+  <script>
+    // ======== RECORD & POINTER ========
+    // Record = struktur data yang menyimpan berbagai properti dalam satu objek
+    // Pointer = variabel yang menunjuk ke lokasi objek dalam memori
+
+    //Membuat "Record" menggunakan class atau function constructor
+    function Mahasiswa(nama, prodi, angkatan) {
+      this.nama = nama;
+      this.prodi = prodi;
+      this.angkatan = angkatan;
+    }
+
+    // Membuat beberapa objek mahasiswa (minimal 15 data)
+    const mhs1 = new Mahasiswa("Sarah Adibah", "Teknologi Permainan", 2025);
+    const mhs2 = new Mahasiswa("Rahmanyadianti Nengtyastuti Rendro", "Teknologi Permainan", 2025);
+    const mhs3 = new Mahasiswa("Zalfa Fairuz Zahirah","Teknologi Permainan", 2025);
+    const mhs4 = new Mahasiswa("Gavin Mahesya Marviano","Teknologi Permainan", 2025);
+    const mhs5 = new Mahasiswa("Ihsan Rafee Aristia", "Teknologi Permainan", 2025);
+    const mhs6 = new Mahasiswa("Muhammad Rafi Dzakwan", "Teknologi Permainan", 2025);
+    const mhs7 = new Mahasiswa("Aira Dzaky Ikhwan", "Teknologi Permainan", 2025);
+    const mhs8 = new Mahasiswa("Amry Purwanto", "Teknologi Permainan", 2025);
+    const mhs9 = new Mahasiswa("Cheryl Citra Lvarissa Yose Nyimas", "Teknologi Permainan", 2025);
+    const mhs10 = new Mahasiswa("Nadya Innayah Ramadhani Kembun", "Teknologi Permainan", 2025);
+    const mhs11 = new Mahasiswa("Farrel Andika", "Teknologi Permainan", 2025);
+    const mhs12 = new Mahasiswa("Toni Sudarsono", "Teknologi Permainan", 2025);
+    const mhs13 = new Mahasiswa("Muhammad Rizky Putra Pandhawa", "Teknologi Permainan", 2025);
+    const mhs14 = new Mahasiswa("Javier Rifa Al insan", "Teknologi Permainan", 2025);
+    const mhs15 = new Mahasiswa("Sultan Daffa Julyan Rusmana", "Teknologi Permainan", 2025);
+
+    // Membuat array untuk menyimpan semua record mahasiswa
+    const daftarMahasiswa = [mhs1, mhs2, mhs3, mhs4, mhs5, mhs6, mhs7, mhs8, mhs9, mhs10, mhs11, mhs12, mhs13, mhs14, mhs15];
+
+    // Menampilkan semua data mahasiswa dalam bentuk tabel
+    console.log("=== DATA MAHASISWA (RECORD) ===");
+    console.table(daftarMahasiswa);
+
+    // Contoh "Pointer" — membuat variabel yang menunjuk ke objek mahasiswa tertentu
+    const pointerMahasiswa = mhs1; // menunjuk ke objek mhs3
+    console.log("=== POINTER MENUNJUK KE OBJEK MAHASISWA ===");
+    console.log("Pointer menunjuk ke:", pointerMahasiswa.nama);
+
+    // Mengubah data melalui pointer (akan berdampak langsung ke objek aslinya)
+    pointerMahasiswa.prodi = "Teknik Informatika";
+    console.log("=== DATA SETELAH PERUBAHAN MELALUI POINTER ===");
+    console.table(daftarMahasiswa);
+
+    // Penjelasan di console
+    console.log("Keterangan:");
+    console.log("- Setiap objek Mahasiswa berperan sebagai RECORD (menyimpan beberapa properti).");
+    console.log("- Variabel 'pointerMahasiswa' berperan sebagai POINTER (penunjuk ke objek).");
+    console.log("- Saat pointer diubah, data di objek aslinya juga ikut berubah karena menunjuk ke alamat memori yang sama.");
+  </script>
+</body>
+</html>
